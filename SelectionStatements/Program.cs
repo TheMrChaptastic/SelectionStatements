@@ -10,19 +10,26 @@ namespace SelectionStatements
             var favNumber = r.Next(1, 1000);
 
             Console.Write("Guess a number: ");
-            var userInput = int.Parse(Console.ReadLine());
+            var userInput = int.TryParse(Console.ReadLine(), out int userInt);
 
-            if (userInput < favNumber)
+            if (userInput == true)
             {
-                Console.WriteLine("too low");
-            }
-            else if (userInput > favNumber)
-            {
-                Console.WriteLine("too high");
+                if (userInt < favNumber)
+                {
+                    Console.WriteLine($"{userInt} is too low it was {favNumber}");
+                }
+                else if (userInt > favNumber)
+                {
+                    Console.WriteLine($"{userInt} is too high it was {favNumber}");
+                }
+                else
+                {
+                    Console.WriteLine("Nevermind");
+                }
             }
             else
             {
-                Console.WriteLine("Nevermind");
+                Console.WriteLine("Not an integer");
             }
             Console.WriteLine();
             Console.Write("Favorite School Subject: ");
